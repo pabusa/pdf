@@ -3,19 +3,42 @@
 <head>
     <meta charset="UTF-8"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-    <title>Document</title>
-
+    <title>Purchase Order</title>
+    <style type="text/css">
+      body { font-family: Helvetica, Arial sans-serif; margin: 0; padding: 0;}
+      h1 { color: red;}
+      table, td, th { border : 0.5px solid #000; border-collapse: collapse; font-size: 90%; } 
+      th { border: none; text-align: center; }
+      td { padding: 0.1cm } 
+      .align-right { text-align: right; }
+      table.disclaimers { border: none; }
+      table.disclaimers td { border: none; padding: 0; font-family: Helvetica, Arial sans-serif; font-size: 80%; padding-bottom: 10px;}
+      table.disclaimers td.disclaimer-header { font-weight: bold; padding-top:15px; padding-bottom: 5px; }
+    </style>
 </head>
 <body>
-    <div class="header">Header to repeat in each page</div>
+    <div class="header">
+      <h1>Header to repeat in each page</h1>
+      <h4>Proposal Id: <span th:text="${proposalId}"></span></h4>
+      <h4>Customer Id: <span th:text="${clientId}"></span></h4>
+    </div>
     <div class="container">
         <div class="orders">
+          <h2>Orders</h2>
+          
             <table>
+              <col style="width:10%" />
+              <col style="width:10%" />
+              <col style="width:40%" />
+              <col style="width:5%" />
+              <col style="width:13%" />
+              <col style="width:12%" />
                 <thead>
                     <tr>
                         <th>&nbsp;</th>
                         <th>ISIN</th>
                         <th>PRODUCT</th>
+                        <th>&nbsp;</th>
                         <th>Volume</th>
                         <th>Shares</th>
                     </tr>
@@ -25,22 +48,94 @@
                         <td>BUY</td>
                         <td>US0378331005</td>
                         <td>APPLE INC.</td>
-                        <td></td>
-                        <td>1000</td>
+                        <td>USD</td>
+                        <td class="align-right">&nbsp;</td>
+                        <td class="align-right">100</td>
                     </tr>
                     <tr>
                         <td>SELL</td>
                         <td>US9843321061</td>
                         <td>YAHOO INC.</td>
-                        <td>0</td>
-                        <td>1000</td>
+                        <td>USD</td>
+                        <td class="align-right">&nbsp;</td>
+                        <td class="align-right">1,000,000</td>
+                    </tr>
+                    <tr>
+                        <td>COMMITMENT </td>
+                        <td>LU1880407488</td>
+                        <td>AMUNDI FUNDS TOP EUROPEAN PLAYERS - I EUR (C)</td>
+                        <td>EUR</td>
+                        <td class="align-right">1,500,000</td>
+                        <td class="align-right">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>BUY-LIMIT</td>
+                        <td>US0378331005</td>
+                        <td>APPLE INC.</td>
+                        <td>USD</td>
+                        <td class="align-right">&nbsp;</td>
+                        <td class="align-right">100</td>
+                    </tr>
+                    <tr>
+                        <td>SELL-LIMIT</td>
+                        <td>US9843321061</td>
+                        <td>YAHOO INC.</td>
+                        <td>USD</td>
+                        <td class="align-right">&nbsp;</td>
+                        <td class="align-right">1,000,000</td>
+                    </tr>
+                    <tr>
+                        <td>SELL-STOP</td>
+                        <td>US9843321061</td>
+                        <td>YAHOO INC.</td>
+                        <td>USD</td>
+                        <td class="align-right">&nbsp;</td>
+                        <td class="align-right">1,000,000</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="disclaimers">
-            <p>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.
-            </p>
+        
+        <div>
+          <h2>Disclaimers</h2>
+          <table class="disclaimers" th:if="@{disclaimers} != ''">
+            <tr><td class="disclaimer-header">Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            
+            <tr><td class="disclaimer-header">Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            
+            <tr><td class="disclaimer-header">Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            
+            <tr><td class="disclaimer-header">Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            
+            <tr><td class="disclaimer-header">Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            
+            <tr><td class="disclaimer-header">Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+            <tr><td>Vestibulum et cursus nunc. Morbi eget sodales diam. Ut non viverra odio. Cras sem libero, auctor ac erat id, fringilla congue magna. Etiam consectetur volutpat urna in scelerisque. Nulla imperdiet velit non ipsum commodo, aliquet ultrices quam aliquet. In non ullamcorper velit. Ut iaculis pharetra viverra. Mauris placerat est sed dignissim viverra. Phasellus sit amet vulputate erat.</td></tr>
+                  
+          </table>
         </div>
     </div>
     <div class="footer">Footer to repeat on each page</div>

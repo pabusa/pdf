@@ -32,7 +32,6 @@ public class PurchaseOrdersServiceImpl implements PurchaseOrdersService {
 
 	@Autowired
 	private TemplateEngine templateEngine;
-	//TemplateEngine templateEngine = new TemplateEngine();
 
 	@Autowired
 	private ServletContext servletContext;
@@ -49,7 +48,8 @@ public class PurchaseOrdersServiceImpl implements PurchaseOrdersService {
 
 		try {
 			Map<String, Object> templateArguments = new HashMap<>();
-			templateArguments.put("ClientId", "123456789");
+			templateArguments.put("clientId", "123456789");
+			templateArguments.put("proposalId", "5934879");
 			templateArguments.put("orders", orders);
 			templateArguments.put("disclaimers", disclaimers);
 
